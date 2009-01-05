@@ -1,0 +1,24 @@
+# 使用视觉铃
+vbell off
+defutf8 on
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+# 用ctrl-O替换ctrl-A
+#escape ^Oo
+# 设置一个大的滚动缓冲区
+defscrollback 5000
+# 设置底行的标题栏
+# caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %LD %d %LM - %c"
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %c:%s - %m %d @%H%? %l%?"
+# F11左边的tab                                                                    
+bindkey -k F1 prev
+# F12右边的tab
+bindkey -k F2 next
+
+
+screen -t Root 		2 zsh 
+#screen -t moni		0 zsh 
+#screen -t Note		1 zsh 
+#screen -t Life 		4 zsh
+#screen -t Trans		5 zsh
+bind 'i' screen -t chat irssi
+screen -t work 		3 zsh

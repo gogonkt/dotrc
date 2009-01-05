@@ -1,0 +1,32 @@
+"2.0pre (created: 2008/12/04 07:30:01)
+ 
+command! g open google <args>
+set runtimepath=/home/william/.vimperator
+ 
+"set nextpattern+=^\s*下一页\s*$
+"set previouspattern+=\s*上一页\s*$
+set nextpattern+=^下一页$
+set previouspattern+=^上一页$
+set nextpattern+=^下一頁$
+set previouspattern+=^上一頁$
+set guioptions+=mT 
+
+set forcuscontent
+ 
+noremap j 5j
+noremap k 5k
+noremap + zM
+noremap - zR
+noremap B :bmarks!<space>
+"map <Right> gt
+"map <Left>  gT
+map l gt
+map h gT
+ 
+"No C-i/C-o, use H/L to backward/forward
+map <C-i> <Nop>
+map <C-o> <Nop>
+ 
+source! ~/.vimperatorrc.local
+ 
+" vim: set ft=vimperator:

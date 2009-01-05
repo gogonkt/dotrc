@@ -1,0 +1,45 @@
+Xft.dpi:96
+!! RXVT-unicode setting
+URxvt.geometry:             80x24+80+80
+URxvt.background:           black
+URxvt.foreground:           white
+URxvt.scrollBar:            False
+URxvt.scrollstyle:          next
+! Use shift+pageup/down to scroll in screen
+URxvt.secondaryScroll:  True
+!set the artificial transparency of the v.t.
+URxvt.inheritPixmap:        True
+!URxvt.tintColor:            gray
+URxvt.shading:              500
+URxvt.saveLines:            1500
+URxvt.preeditType:          Root
+URxvt.borderLess:           False
+!italicFont and boldItalicFont undefined
+URxvt.font:xft:Terminus-10,xft:WenQuanYi Bitmap Song-10
+URxvt.boldFont:xft:Terminus-10:Bold,xft:WenQuanYi Bitmap Song-10:Bold
+
+!redefine color to use tango theme in vim
+!Black
+URxvt.color0:           #000000
+URxvt.color8:           #555753
+!Red
+URxvt.color1:           #CC0000
+URxvt.color9:           #EF2929
+!Green
+URxvt.color2:           #4E9A06
+URxvt.color10:          #8AE234
+!Yellow
+URxvt.color3:           #C4A000
+URxvt.color11:          #FCE94F
+!Blue
+URxvt.color4:           #3465A4
+URxvt.color12:          #729FCF
+!Magenta
+URxvt.color5:           #75507B
+URxvt.color13:          #AD7FA8
+!Cyan
+URxvt.color6:           #06989A
+URxvt.color14:          #34E2E2
+!White
+URxvt.color7:           #D3D7CF
+URxvt.color15:          #EEEEEC
