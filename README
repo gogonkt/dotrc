@@ -1,0 +1,27 @@
+http://github.com/cratuki/steamdoc/tree/master
+ 
+ 
+Global setup:
+ 
+  git config --global user.email craig@cowoh.org
+      
+ 
+Next steps:
+ 
+  mkdir steamdoc
+  cd steamdoc
+  git init
+  touch README
+  git add README
+  git commit -m 'first commit'
+  git remote add origin git@github.com:cratuki/steamdoc.git
+  git push origin master
+      
+ 
+Existing Git Repo?
+ 
+  cd existing_git_repo
+  git remote add origin git@github.com:cratuki/steamdoc.git
+  git push origin master
+      
+ 
