@@ -1,22 +1,37 @@
 Xft.dpi:96
+
 !! RXVT-unicode setting
 URxvt.geometry:             80x24+80+80
 URxvt.background:           black
 URxvt.foreground:           white
 URxvt.scrollBar:            False
 URxvt.scrollstyle:          next
+
 ! Use shift+pageup/down to scroll in screen
 URxvt.secondaryScroll:  True
+
 !set the artificial transparency of the v.t.
 URxvt.inheritPixmap:        True
-!URxvt.tintColor:            gray
-URxvt.shading:              500
+URxvt.tintColor:            white
+URxvt.shading:              50
 URxvt.saveLines:            1500
 URxvt.preeditType:          Root
 URxvt.borderLess:           False
+
+!# teh transparency stuff
+!URxvt*inheritPixmap:    true
+!URxvt*tintColor:        white
+!URxvt*shading:          40
+
+
 !italicFont and boldItalicFont undefined
 URxvt.font:xft:Terminus-10,xft:WenQuanYi Bitmap Song-10
 URxvt.boldFont:xft:Terminus-10:Bold,xft:WenQuanYi Bitmap Song-10:Bold
+
+!handle url
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 1
+URxvt.perl-ext-common: matcher
 
 !redefine color to use tango theme in vim
 !Black
