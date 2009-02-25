@@ -24,4 +24,20 @@ Existing Git Repo?
   git remote add origin git@github.com:cratuki/steamdoc.git
   git push origin master
       
+http://b.lesseverything.com/2008/3/25/got-git-howto-git-and-github
+
+   1.  /luvd(master) $ git remote add drnic git://github.com/drnic/lovd-by-less.git
+   2. /luvd(master) $ git pull
+   3. /luvd(master) $ git checkout -b drnic/master
+   4. /luvd(drnic/master) $ git pull drnic master
+   5. [look at the files, rake, test, etc]
+   6. /luvd(drnic/master) $ git status
+   7. /luvd(drnic/master) $ git checkout master
+   8. /luvd(master) $ git merge drnic/master
+   9. /luvd(master) $ git status
+  10. /luvd(master) $ git commit -a
+  11. /luvd(master) $ git push
  
+http://billy3321.blogspot.com/2009/02/github-howto.html
+
+使用Git與Github管理軟體開發專案
