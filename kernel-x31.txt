@@ -1,0 +1,226 @@
+#kernel configure for x31
+
+http://www.gentoo.org/doc/en/kernel-upgrade.xml
+
+# eselect kernel list
+# cd /usr/src
+# ln -sfn linux-2.6.9-gentoo-r2 linux
+
+# genkernel all
+# genkernel --menuconfig --bootloader=grub all
+
+# genkernel --splash=natural_gentoo --bootloader=grub all
+
+/etc/genkernel.conf. 
+
+http://www.brixandersen.dk/papers/X31/X31.html#sect-kernel
+
+3. Kernel Configuration
+
+    * Subarchitecture Type (PC-compatible) (CONFIG_X86_PC)
+    * Processor family (Pentium M) (CONFIG_MPENTIUMM)
+    * Machine Check Exception (CONFIG_X86_MCE)
+    * MTRR (Memory Type Range Register) support (CONFIG_MTRR)
+    * PCI support (CONFIG_PCI)
+    * ISA support (CONFIG_ISA)
+    * ATA/ATAPI/MFM/RLL support (CONFIG_IDE)
+    * Enhanced IDE/MFM/RLL disk/cdrom/tape/floppy support (CONFIG_BLK_DEV_IDE)
+    * Include IDE/ATA-2 DISK support (CONFIG_BLK_DEV_IDEDISK)
+    * PCI IDE chipset support (CONFIG_BLK_DEV_IDEPCI)
+    * Sharing PCI IDE interrupts support (CONFIG_IDEPCI_SHARE_IRQ)
+    * Generic PCI bus-master DMA support (CONFIG_BLK_DEV_IDEDMA_PCI)
+    * Use PCI DMA by default when available (CONFIG_IDEDMA_PCI_AUTO)
+    * Intel PIIXn chipsets support (CONFIG_BLK_DEV_PIIX)
+
+3.1.1. SMBus
+
+    * I2C device interface (CONFIG_I2C_CHARDEV)
+    * Intel 801 (CONFIG_I2C_I801)
+
+3.2. Graphics Chipset
+
+3.2.1. Framebuffer Console
+
+    * Support for frame buffer devices (CONFIG_FB)
+    * ATI Radeon display support (CONFIG_FB_RADEON)
+    * Video mode selection support (CONFIG_VIDEO_SELECT)
+    * Framebuffer Console support (CONFIG_FRAMEBUFFER_CONSOLE)
+
+video=radeonfb:1024x768-32
+
+3.2.2. Direct Rendering
+
+    * /dev/agpgart (AGP Support) (CONFIG_AGP)
+    * Intel 440LX/BX/GX, I8xx and E7x05 chipset support (CONFIG_AGP_INTEL)
+    * Direct Rendering Manager (XFree86 4.1.0 and higher DRI support) (CONFIG_DRM)
+    * ATI Radeon (CONFIG_DRM_RADEON)
+
+3.3. Power Management
+
+3.3.1. APM
+
+    * Power Management support (CONFIG_PM)
+    * APM (Advanced Power Management) BIOS support (CONFIG_APM)
+    * Enable PM at boot time (CONFIG_APM_DO_ENABLE)
+    * Make CPU Idle calls when idle (CONFIG_APM_CPU_IDLE)
+    * Enable console blanking using APM (CONFIG_APM_DISPLAY_BLANK)
+    * RTC stores time in GMT (CONFIG_APM_RTC_IS_GMT)
+    * Allow interrupts during APM BIOS calls (CONFIG_APM_ALLOW_INTS)
+
+3.3.1.1. APM Suspend
+
+3.3.2. ACPI
+
+    * Power Management support (CONFIG_PM)
+    * Sleep States (CONFIG_ACPI_SLEEP)
+    * ACPI Support (CONFIG_ACPI)
+    * AC Adapter (CONFIG_ACPI_AC)
+    * Battery (CONFIG_ACPI_BATTERY)
+    * Button (CONFIG_ACPI_BUTTON)
+    * Processor (CONFIG_ACPI_PROCESSOR)
+    * Thermal Zone (CONFIG_ACPI_THERMAL)
+    * IBM ThinkPad Laptop Extras (CONFIG_ACPI_IBM) [module]
+    * Power Management Timer Support (CONFIG_X86_PM_TIMER)
+
+3.3.2.1. ACPI Suspend
+
+    * Power Management support (CONFIG_PM)
+    * Software Suspend (CONFIG_SOFTWARE_SUSPEND)
+
+resume=/dev/hda2
+
+3.3.3. CPU Frequency Scaling
+
+    * CPU Frequency scaling (CONFIG_CPU_FREQ)
+    * 'performance' governor (CONFIG_CPU_FREQ_GOV_PERFORMANCE)
+    * 'powersave' governor (CONFIG_CPU_FREQ_GOV_POWERSAVE)
+    * 'userspace' governor for userspace frequency scaling (CONFIG_CPU_FREQ_GOV_USERSPACE)
+    * 'ondemand' cpufreq policy governor (CONFIG_CPU_FREQ_GOV_ONDEMAND)
+    * CPU frequency table helpers (CONFIG_CPU_FREQ_TABLE)
+    * Intel Enhanced SpeedStep (CONFIG_X86_SPEEDSTEP_CENTRINO)
+    * Use ACPI tables to decode valid frequency/voltage pairs (CONFIG_X86_SPEEDSTEP_CENTRINO_ACPI)
+    * Built-in tables for Banias CPUs (CONFIG_X86_SPEEDSTEP_CENTRINO_TABLE)
+
+3.4. USB Ports
+
+    * Support for Host-side USB (CONFIG_USB)
+    * EHCI HCD (USB 2.0) support (CONFIG_USB_EHCI_HCD)
+    * UHCI HCD (most Intel and VIA) support (CONFIG_USB_UHCI_HCD)
+
+3.5. FireWire
+
+
+    * IEEE 1394 (FireWire) support (CONFIG_IEEE1394)
+    * OHCI-1394 support (CONFIG_IEEE1394_OHCI1394)
+
+3.6. Infrared Port
+
+    * IrDA (infrared) subsystem support (CONFIG_IRDA) [module]
+    * NSC PC87108/PC87338 (CONFIG_NSC_FIR) [module]
+
+alias irda0 nsc-ircc
+options nsc-ircc dongle_id=0x9
+
+3.7. Parallel Port
+
+    * Parallel port support (CONFIG_PARPORT) [module]
+    * PC-style hardware (CONFIG_PARPORT_PC) [module]
+
+3.8. CardBus Slot
+
+    * PCCard (PCMCIA/CardBus) support (CONFIG_PCCARD)
+    * 16-bit PCMCIA support (CONFIG_PCMCIA)
+    * 32-bit CardBus support (CONFIG_CARDBUS)
+    * CardBus yenta-compatible bridge support (CONFIG_YENTA) [module]
+
+3.9. Compact Flash Slot
+
+	* PCMCIA IDE support (CONFIG_BLK_DEV_IDECS) [module]
+
+3.10. Ethernet
+
+3.10.1. E100 Driver
+
+    * Ethernet (10 or 100Mbit) (CONFIG_NET_ETHERNET)
+    * EISA, VLB, PCI and on board controllers (CONFIG_NET_PCI)
+    * Intel(R) PRO/100+ support (CONFIG_E100)
+
+3.10.2. EEPRO100 Driver
+
+    * Ethernet (10 or 100Mbit) (CONFIG_NET_ETHERNET)
+    * EISA, VLB, PCI and on board controllers (CONFIG_NET_PCI)
+    * EtherExpressPro/100 support (eepro100, original Becker driver) (CONFIG_EEPRO100)
+
+3.11. Wireless Network
+
+    * Hotplug firmware loading support (CONFIG_FW_LOADER)
+    * Wireless LAN drivers (non-hamradio) & Wireless Extensions (CONFIG_NET_RADIO)
+    * Cryptographic API (CONFIG_CRYPTO)
+    * ARC4 cipher algorithm (CONFIG_CRYPTO_ARC4)
+    * Michael MIC keyed digest algorithm (CONFIG_CRYPTO_MICHAEL_MIC)
+    * AES cipher algorithms (i586) (CONFIG_CRYPTO_AES_586)
+    * CRC32 functions (CONFIG_CRC32)
+
+3.12. Sound Card
+
+3.12.1. ALSA Driver
+
+    * Sound card support (CONFIG_SOUND) [module]
+    * Advanced Linux Sound Architecture (CONFIG_SND) [module]
+    * OSS Mixer API (CONFIG_SND_MIXER_OSS) [module]
+    * OSS PCM (digital audio) API (CONFIG_SND_PCM_OSS) [module]
+    * Intel i8x0/MX440, SiS 7012; Ali 5455; NForce Audio; AMD768/8111 (CONFIG_SND_INTEL8X0) [module]
+
+# ALSA portion
+alias char-major-116 snd
+alias snd-card-0 snd-intel8x0
+
+# OSS/Free portion
+alias char-major-14 soundcore
+alias sound-slot-0 snd-intel8x0
+alias sound-service-0-0 snd-mixer-oss
+alias sound-service-0-3 snd-pcm-oss
+alias sound-service-0-12 snd-pcm-oss
+
+alias /dev/mixer snd-mixer-oss
+alias /dev/dsp snd-pcm-oss
+
+3.12.2. OSS Driver
+
+    * Sound card support (CONFIG_SOUND)
+    * Open Sound System (DEPRECATED) (CONFIG_SOUND_PRIME)
+    * Intel ICH (i8xx) audio support (CONFIG_SOUND_ICH)
+
+3.12.3. PC Speaker
+
+    * Misc (CONFIG_INPUT_MISC)
+    * PC Speaker support (CONFIG_INPUT_PCSPKR)
+
+3.13. Modem
+
+3.13.1. Smart Link Driver
+
+3.13.2. ALSA Driver
+
+    * Intel i8x0/MX440; AMD768/8111 modems (EXPERIMENTAL) (CONFIG_SND_INTEL8X0M) [module]
+
+alias snd-card-1 snd-intel8x0m
+options snd cards_limit=2
+
+3.14. Hardware Watchdog
+
+    * Watchdog Timer Support (CONFIG_WATCHDOG)
+    * Intel i8xx TCO Timer/Watchdog (CONFIG_I8XX_TCO)
+
+3.15. Trackpoint Mouse
+
+    * Mouse interface (CONFIG_INPUT_MOUSEDEV)
+    * Mice (CONFIG_INPUT_MOUSE)
+    * PS/2 mouse (CONFIG_MOUSE_PS2)
+
+3.16. ThinkPad Buttons
+
+    * /dev/nvram support (CONFIG_NVRAM)
+
+options ibm_acpi hotkey=enable,0xffff
+
