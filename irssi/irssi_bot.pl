@@ -31,11 +31,11 @@ use LWP::Simple;
 $VERSION='0.1';
 
 %IRSSI=(
-	authors     =>  'Josh Kearney',
-	name        =>  'IRC Bot',
+	authors     =>  'gogonkt',
+	name        =>  'irssi IRC Bot',
 	description =>  'Execute perl scripts through signal binds.',
 	license     =>  'GPL',
-	url         =>  'http://jk0.org/projects/irssi-scripts/'
+	url         =>  ''
 );
 
 sub public {
