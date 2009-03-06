@@ -47,7 +47,24 @@ sub public {
 		my ($old)=/2\.4 version .* (2\.4\..+)/i;
 		$server->command('/MSG '.$target.' Linux内核: stable '.$stable.' ( old stable '.$old.' )');
 	}
+
+	elsif($msg=~/^\.g/) {
+		$server->command('/MSG '.$target.' g linux');
+	}
+
+	elsif($msg=~/^\.st/) {
+		$server->command('/MSG '.$target.' r点歌台: status');
+	}
+
+	elsif($msg=~/^\.i/) {
+		$server->command('/MSG '.$target.' !index');
+	}
+
+	elsif($msg=~/^\.help/) {
+		$server->command('/MSG '.$target.' 目前 Luna 这个机器人支持的指令: .help 手册 .kernel,查询内核版本 .g google搜索');
+	}
 }
+
 
 sub private {
 	my ($server,$msg,$nick,$address)=@_;
