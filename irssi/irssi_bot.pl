@@ -27,6 +27,7 @@ use strict;
 use vars qw($VERSION %IRSSI);
 
 use LWP::Simple;
+use SOAP::Lite;
 
 $VERSION='0.1';
 
@@ -41,27 +42,33 @@ $VERSION='0.1';
 sub public {
 	my ($server,$msg,$nick,$address,$target)=@_;
 
-	if($msg=~/^\.kernel/) {
+	elsif($msg=~/^\.help/i) {
+		$server->command('/MSG '.$target.' 目前 Luna 这个机器人支持的指令: .help 手册 .kernel,查询内核版本 .g google搜索');
+	}
+
+	if($msg=~/^\.kernel/i) {
 		$_=get('http://www.kernel.org/kdist/finger_banner');
 		my ($stable)=/.* stable version .* (2\.6\..+)/i;
 		my ($old)=/2\.4 version .* (2\.4\..+)/i;
 		$server->command('/MSG '.$target.' Linux内核: stable '.$stable.' ( old stable '.$old.' )');
 	}
 
-	elsif($msg=~/^\.g/) {
-		$server->command('/MSG '.$target.' g linux');
-	}
-
-	elsif($msg=~/^\.st/) {
+	elsif($msg=~/^\.st/i) {
 		$server->command('/MSG '.$target.' r点歌台: status');
 	}
 
-	elsif($msg=~/^\.i/) {
+	elsif($msg=~/^\.i/i) {
 		$server->command('/MSG '.$target.' !index');
 	}
 
-	elsif($msg=~/^\.help/) {
-		$server->command('/MSG '.$target.' 目前 Luna 这个机器人支持的指令: .help 手册 .kernel,查询内核版本 .g google搜索');
+	elsif($msg=~/^\.t/i) {
+		$server->command('/MSG '.$target.' g linux');
+	}
+
+	elsif($msg=~/^\.g/i) {
+		my ($query)=$msg=~/.g (.*)/;
+
+		$server->command('/MSG '.$target.' ~google for '.$query);
 	}
 }
 
