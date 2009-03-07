@@ -42,11 +42,11 @@ $VERSION='0.1';
 sub public {
 	my ($server,$msg,$nick,$address,$target)=@_;
 
-	elsif($msg=~/^\.help/i) {
+	if($msg=~/^\.help/i) {
 		$server->command('/MSG '.$target.' 目前 Luna 这个机器人支持的指令: .help 手册 .kernel,查询内核版本 .g google搜索');
 	}
 
-	if($msg=~/^\.kernel/i) {
+	elsif($msg=~/^\.kernel/i) {
 		$_=get('http://www.kernel.org/kdist/finger_banner');
 		my ($stable)=/.* stable version .* (2\.6\..+)/i;
 		my ($old)=/2\.4 version .* (2\.4\..+)/i;
@@ -62,13 +62,25 @@ sub public {
 	}
 
 	elsif($msg=~/^\.t/i) {
-		$server->command('/MSG '.$target.' g linux');
+		$server->command('/MSG '.$target.' now at '.$target);
 	}
 
 	elsif($msg=~/^\.g/i) {
 		my ($query)=$msg=~/.g (.*)/;
 
 		$server->command('/MSG '.$target.' ~google for '.$query);
+	}
+
+	elsif($msg=~/^\.bugs/i) {
+		my ($query)=$msg=~/.bugs (.*)/;
+
+		$server->command('/MSG '.$target.' ~google for '.$query.' site:bugs.gentoo.org');
+	}
+
+	elsif($msg=~/^\.cpan/i) {
+		my ($query)=$msg=~/.cpan (.*)/;
+
+		$server->command('/MSG '.$target.' ~google for '.$query.' site:www.cpan.org');
 	}
 }
 
