@@ -27,7 +27,8 @@ use strict;
 use vars qw($VERSION %IRSSI);
 
 use LWP::Simple;
-use SOAP::Lite;
+
+require("mod/Google.pm");
 
 $VERSION='0.1';
 
@@ -43,7 +44,9 @@ sub public {
 	my ($server,$msg,$nick,$address,$target)=@_;
 
 	if($msg=~/^\.help/i) {
-		$server->command('/MSG '.$target.' 目前 Luna 这个机器人支持的指令: .help 手册 .kernel,查询内核版本 .g google搜索');
+		$server->command('/MSG '.$target.
+			' 目前 Luna 这个机器人支持的指令: .help 手册 .kernel,查询内核版本 .g google搜索'
+			);
 	}
 
 	elsif($msg=~/^\.kernel/i) {
@@ -66,9 +69,15 @@ sub public {
 	}
 
 	elsif($msg=~/^\.g/i) {
-		my ($query)=$msg=~/.g (.*)/;
-
-		$server->command('/MSG '.$target.' ~google for '.$query);
+		if($msg=~/^\.g help/){
+			$server->command('/MSG '.$target.' google 搜索,".g 关键字"');
+		}
+		else{
+			my ($query)=$msg=~/.g (.*)/;
+			## BUGS Use of uninitialized value in concatenation (.) or string at /home/gogonkt/.irssi/scripts/mod/Google.pm line 52.
+			## 这是warning of Google.pm 关了 'use warning' 可以临时解决, 出现在网站标题分解不出的时候
+			$server->command('/MSG '.$target.' '.join(' ',Google::search($query)));
+		}
 	}
 
 	elsif($msg=~/^\.bugs/i) {
