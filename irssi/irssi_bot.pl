@@ -43,32 +43,33 @@ $VERSION='0.1';
 sub public {
 	my ($server,$msg,$nick,$address,$target)=@_;
 
-	if($msg=~/^\.help/i) {
+	if($msg=~/^\.help/) {##
 		$server->command('/MSG '.$target.
-			' 目前 Luna 这个机器人支持的指令: .help 手册 .kernel,查询内核版本 .g google搜索'
+			' 目前 Luna 这个机器人支持的指令: .help 手册 .kernel,查询内核版本 .g google搜索 .st 查询电台状态 .i !index'
+			.' .t 查询目前房间 .cpan 搜索CPAN .bugs 搜索gentoo的bugs报告'
 			);
 	}
 
-	elsif($msg=~/^\.kernel/i) {
+	elsif($msg=~/^\.kernel/) {##
 		$_=get('http://www.kernel.org/kdist/finger_banner');
 		my ($stable)=/.* stable version .* (2\.6\..+)/i;
 		my ($old)=/2\.4 version .* (2\.4\..+)/i;
 		$server->command('/MSG '.$target.' Linux内核: stable '.$stable.' ( old stable '.$old.' )');
 	}
 
-	elsif($msg=~/^\.st/i) {
+	elsif($msg=~/^\.st/) {##
 		$server->command('/MSG '.$target.' r点歌台: status');
 	}
 
-	elsif($msg=~/^\.i/i) {
+	elsif($msg=~/^\.i/) {##
 		$server->command('/MSG '.$target.' !index');
 	}
 
-	elsif($msg=~/^\.t/i) {
+	elsif($msg=~/^\.t/) {##
 		$server->command('/MSG '.$target.' now at '.$target);
 	}
 
-	elsif($msg=~/^\.g/i) {
+	elsif($msg=~/^\.g/) {##
 		if($msg=~/^\.g help/){
 			$server->command('/MSG '.$target.' google 搜索,".g 关键字"');
 		}
@@ -80,16 +81,14 @@ sub public {
 		}
 	}
 
-	elsif($msg=~/^\.bugs/i) {
+	elsif($msg=~/^\.bugs/) {##
 		my ($query)=$msg=~/.bugs (.*)/;
-
 		$server->command('/MSG '.$target.' ~google for '.$query.' site:bugs.gentoo.org');
 	}
 
-	elsif($msg=~/^\.cpan/i) {
+	elsif($msg=~/^\.cpan/) {##
 		my ($query)=$msg=~/.cpan (.*)/;
-
-		$server->command('/MSG '.$target.' ~google for '.$query.' site:www.cpan.org');
+		$server->command('/MSG '.$target.' g '.$query.' site:search.cpan.org');
 	}
 }
 
