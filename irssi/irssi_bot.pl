@@ -27,6 +27,8 @@ use strict;
 use vars qw($VERSION %IRSSI);
 
 use LWP::Simple;
+use REST::Google::Search;
+binmode(STDOUT, ':encoding(utf8)');
 
 require("mod/Google.pm");
 
@@ -75,9 +77,19 @@ sub public {
 		}
 		else{
 			my ($query)=$msg=~/.g (.*)/;
+
+				REST::Google::Search->http_referer('linuxfire.com.cn');
+				my $res=REST::Google::Search->new(
+					q=>$query,
+					); die "response status failure" if $res->responseStatus != 200;
+				my $data = $res->responseData;
+				my @results = $data->results;
+				$server->command('/MSG '.$target.' '.$_->title.' '.$_->url) foreach @results;
+
+
 			## BUGS Use of uninitialized value in concatenation (.) or string at /home/gogonkt/.irssi/scripts/mod/Google.pm line 52.
 			## 这是warning of Google.pm 关了 'use warning' 可以临时解决, 出现在网站标题分解不出的时候
-			$server->command('/MSG '.$target.' '.join(' ',Google::search($query)));
+			# $server->command('/MSG '.$target.' '.join(' ',Google::search($query)));
 		}
 	}
 
