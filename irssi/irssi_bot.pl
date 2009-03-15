@@ -28,6 +28,8 @@ use vars qw($VERSION %IRSSI);
 
 use LWP::Simple;
 use REST::Google::Search;
+use HTML::Entities;
+
 binmode(STDOUT, ':encoding(utf8)');
 
 require("mod/Google.pm");
@@ -90,7 +92,8 @@ sub public {
 				my $tmp=$r->title;
 				#$tmp=~s/b//g;
 				$tmp=~ s/<(.*?)>//gi;
-				$tmp=~ s/&quot;/"/gi; #  m/\Q&quot;\E/
+				#$tmp=~ s/&quot;/"/gi; #  m/\Q&quot;\E/
+				$tmp=decode_entities($tmp);
 				$server->command('/MSG '. $target. ' '. $tmp. " ". $r->url. "\n");
 				}
 
