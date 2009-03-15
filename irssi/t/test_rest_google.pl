@@ -27,5 +27,9 @@ my @results = $data->results;
 # printf "url  : %s\n", $r->url;
 # }
 
-#printf "title: %s....$_" foreach @result;
-printf $_->title.$_->url."\n" foreach @results;
+foreach my $r (@results){
+my $tmp=$r->title;
+#$tmp=~s/b//g;
+$tmp=~ s/<(.*?)>//gi;
+printf $tmp .$r->url."\n" ;
+}
