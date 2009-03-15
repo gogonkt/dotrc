@@ -84,7 +84,16 @@ sub public {
 					); die "response status failure" if $res->responseStatus != 200;
 				my $data = $res->responseData;
 				my @results = $data->results;
-				$server->command('/MSG '.$target.' '.$_->title.' '.$_->url) foreach @results;
+				# $server->command('/MSG '.$target.' '.$_->title.' '.$_->url) foreach @results;
+				
+				foreach my $r (@results){
+				my $tmp=$r->title;
+				#$tmp=~s/b//g;
+				$tmp=~ s/<(.*?)>//gi;
+				$tmp=~ s/&quot;/"/gi; #  m/\Q&quot;\E/
+				$server->command('/MSG '. $target. ' '. $tmp. " ". $r->url. "\n");
+				}
+
 
 
 			## BUGS Use of uninitialized value in concatenation (.) or string at /home/gogonkt/.irssi/scripts/mod/Google.pm line 52.
