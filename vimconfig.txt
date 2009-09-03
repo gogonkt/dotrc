@@ -1,0 +1,9 @@
+wget http://linuxfire.com.cn/~fivesheep/vimconfig.tar.bz2
+21:41 < 拜仑> http://linuxfire.com.cn/~fivesheep/vimconfig.tar.bz2
+21:41 < 拜仑> 里边有图片 还有个 tar包
+21:41 < 拜仑> tar包是配置
+21:41 < 拜仑> F2 开 filelist
+21:41 < 拜仑> F3 开 project list
+21:42 < 拜仑> F4 开 class browser
+21:42 < 拜仑> 需要cscope
+

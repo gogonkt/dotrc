@@ -10,6 +10,7 @@ http://www.gentoo.org/doc/en/kernel-upgrade.xml
 # genkernel --menuconfig --bootloader=grub all
 
 # genkernel --splash=natural_gentoo --bootloader=grub all
+# genkernel --splash=natural_gentoo --bootloader=grub --real-root=/dev/hda9 all
 
 /etc/genkernel.conf. 
 

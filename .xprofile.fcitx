@@ -1,0 +1,6 @@
+# ~/.xprofile.fcitx
+export XMODIFIERS="@im=fcitx"
+export XIM=fcitx
+export XIM_PROGRAM=fcitx
+export GTK_IM_MODULE="fcitx"
+exec fcitx -d&

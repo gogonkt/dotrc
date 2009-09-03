@@ -1,0 +1,48 @@
+font -artwiz-snap-*-*-*-*-*-*-*-*-*-*-*-*
+#use_xft yes
+
+double_buffer yes
+
+update_interval 1
+
+draw_borders 0
+draw_shades 0
+
+no_buffers yes
+
+metar_station KLFK
+
+TEXT
+${color gray}system overview
+${color lightgrey}${hr}
+${color white}host = ${nodename} / ${kernel} (Gentoo)
+up = ${uptime}
+load = ${loadavg}
+cpu = ${cpu}% usage
+mem = ${mem}/${memmax} used
+bat = ${battery BAT1}
+
+${color gray}music player daemon${color white}
+${color lightgrey}${hr}
+${color white}${mpd_artist} - ${mpd_title}
+${mpd_bar}
+${mpd_status} / ${mpd_bitrate} kbps / ${mpd_vol}% volume
+
+${color gray}storage${color white}
+${color lightgrey}${hr}
+${color white}/ = ${fs_used /}/${fs_size /}
+/home = ${fs_used /home}/${fs_size /home}
+/storage = ${fs_used /storage}/${fs_size /storage}
+/storage_aux = ${fs_used /storage_aux}/${fs_size /storage_aux}
+
+${color gray}current weather${color white}
+${color lightgrey}${hr}
+${color white}${exec cat ~/.metar/metar_status}
+
+${color gray}folding at home${color white}
+${color lightgrey}${hr}
+${color white}${exec ~/.fah_status.sh}
+
+${color gray}z4ch.net@gmail.com${color white}
+${color lightgrey}${hr}
+${color white}${exec cat ~/.gmail/.gmail_top}

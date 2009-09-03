@@ -47,29 +47,34 @@ $VERSION='0.1';
 sub public {
 	my ($server,$msg,$nick,$address,$target)=@_;
 
-	if($msg=~/^\.help/) {##
+	if($msg=~/^\.help$/) {##
 		$server->command('/MSG '.$target.
 			' 目前 Luna 这个机器人支持的指令: .help 手册 .kernel,查询内核版本 .g google搜索 .st 查询电台状态 .i !index'
 			.' .t 查询目前房间 .cpan 搜索CPAN .bugs 搜索gentoo的bugs报告'
 			);
 	}
 
-	elsif($msg=~/^\.kernel/) {##
+	elsif($msg=~/^\.kernel$/) {##
 		$_=get('http://www.kernel.org/kdist/finger_banner');
 		my ($stable)=/.* stable version .* (2\.6\..+)/i;
 		my ($old)=/2\.4 version .* (2\.4\..+)/i;
 		$server->command('/MSG '.$target.' Linux内核: stable '.$stable.' ( old stable '.$old.' )');
 	}
 
-	elsif($msg=~/^\.st/) {##
-		$server->command('/MSG '.$target.' r点歌台: status');
-	}
+#	elsif($msg=~/^\.st$/i or $msg=~/^st$/i) {##
+#        if($target=~/#linuxfire/i){
+#		$server->command('/MSG '.$target.' 电台已经转到#LFR,快点过来和DJ互动吧');
+#        }
+#        elsif($target=~/#lfr/i){
+#		$server->command('/MSG -fire #LFR r点歌台 st');
+#        }
+#	}
 
-	elsif($msg=~/^\.i/) {##
-		$server->command('/MSG '.$target.' !index');
-	}
+#	elsif($msg=~/^\.i$/) {##
+#		$server->command('/MSG '.$target.' !index');
+#	}
 
-	elsif($msg=~/^\.t/) {##
+	elsif($msg=~/^\.t$/) {##
 		$server->command('/MSG '.$target.' now at '.$target);
 	}
 
@@ -90,9 +95,7 @@ sub public {
 				
 				foreach my $r (@results){
 				my $tmp=$r->title;
-				#$tmp=~s/b//g;
 				$tmp=~ s/<(.*?)>//gi;
-				#$tmp=~ s/&quot;/"/gi; #  m/\Q&quot;\E/
 				$tmp=decode_entities($tmp);
 				$server->command('/MSG '. $target. ' '. $tmp. " ". $r->url. "\n");
 				}

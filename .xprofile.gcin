@@ -1,0 +1,8 @@
+# ~/.xprofile.gcin
+export GCIN_DUAL_XIM_OFF=                                                                                                    
+export GCIN_XIM=gcin                                                                                                         
+export XMODIFIERS=@im=${GCIN_XIM}                                                                                            
+export XIM=gcin                                                                                                              
+export XIM_PROGRAM=gcin                                                                                                      
+export GTK_IM_MODULE=gcin                                                                                                    
+exec gcin &
