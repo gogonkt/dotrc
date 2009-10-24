@@ -5,4 +5,4 @@ export XMODIFIERS=@im=${GCIN_XIM}
 export XIM=gcin                                                                                                              
 export XIM_PROGRAM=gcin                                                                                                      
 export GTK_IM_MODULE=gcin                                                                                                    
-exec gcin &
+( sleep 10;exec gcin& )&

@@ -91,14 +91,22 @@ sub public {
 					); die "response status failure" if $res->responseStatus != 200;
 				my $data = $res->responseData;
 				my @results = $data->results;
+                my $cursor = $data->cursor;
 				# $server->command('/MSG '.$target.' '.$_->title.' '.$_->url) foreach @results;
 				
-				foreach my $r (@results){
+                my $r = $results[0];
 				my $tmp=$r->title;
 				$tmp=~ s/<(.*?)>//gi;
 				$tmp=decode_entities($tmp);
 				$server->command('/MSG '. $target. ' '. $tmp. " ". $r->url. "\n");
-				}
+				$server->command('/MSG '. $target. ' '. 'estimated result: '. $cursor->estimatedResultCount ."\n");
+
+				# foreach my $r (@results){
+				# my $tmp=$r->title;
+				# $tmp=~ s/<(.*?)>//gi;
+				# $tmp=decode_entities($tmp);
+				# $server->command('/MSG '. $target. ' '. $tmp. " ". $r->url. "\n");
+				# }
 
 
 
